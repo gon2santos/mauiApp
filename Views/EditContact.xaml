@@ -5,6 +5,7 @@
              Title="EditContact">
     <VerticalStackLayout>
         <Label 
+            x:Name="lblName"
             Text="Edit Contacts page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />

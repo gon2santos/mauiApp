@@ -1,6 +1,7 @@
 namespace MauiApp1.Views;
 
-using MauiApp1.Models;
+using Contact = MauiApp1.Models.Contact;
+using ContactRepository = MauiApp1.Models.ContactRepository;
 
 public partial class Contacts : ContentPage
 {
@@ -17,8 +18,7 @@ public partial class Contacts : ContentPage
     {
 		if (listContacts.SelectedItem != null) {
 			//logic
-			await DisplayAlert("test", "test", "Oki!");
-			await Shell.Current.GoToAsync(nameof(EditContact));
+			await Shell.Current.GoToAsync($"{nameof(EditContact)}?Id={((Contact)listContacts.SelectedItem).ContactId}");
 		}
 		
     }

@@ -1,7 +1,11 @@
 namespace MauiApp1.Views;
+using MauiApp1.Models;
+
+[QueryProperty(nameof(ContactId), "Id")]
 
 public partial class EditContact : ContentPage
 {
+	private Contact contact;
 	public EditContact()
 	{
 		InitializeComponent();
@@ -11,4 +15,13 @@ public partial class EditContact : ContentPage
     {
 		Shell.Current.GoToAsync("..");
     }
+
+	public string ContactId 
+	{
+		set 
+		{
+			contact = ContactRepository.GetContact(int.Parse(value));
+			lblName.Text = contact.Name;
+		}
+	}
 }
