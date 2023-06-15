@@ -11,12 +11,16 @@ namespace MauiApp1.Models
         public String Name { get; set; }
         public String Email { get; set; }
         public int ContactId { get; set; }
+        public string number { get; set; }
+        public string address { get; set; }
 
-        public Contact(String _name, String _email, int _id)
+        public Contact(String _name, String _email, int _id, string _number, string _address)
         {
             Name = _name;
             Email = _email;
             ContactId = _id;
+            number = _number;
+            address = _address;
         }
 
     }
