@@ -18,9 +18,27 @@ namespace MauiApp1.Models
             return _contacts;
         }
 
-        public static Contact GetContact(int id)
+        public static Contact GetContactById(int id)
         {
-            return _contacts.FirstOrDefault(x => x.ContactId == id);
+            var cont = _contacts.FirstOrDefault(x => x.ContactId == id);
+            if (cont != null)
+                return new Contact(cont.Name, cont.Email, cont.ContactId, cont.number, cont.address);
+            return null;
+        }
+
+        public static void UpdateContact(int id, Contact contact)
+        {
+            if (id != contact.ContactId)
+                return;
+
+            var contactToUpdate = _contacts.FirstOrDefault(x => x.ContactId == id);
+            if (contactToUpdate != null)
+            {
+                contactToUpdate.Name = contact.Name;
+                contactToUpdate.Email = contact.Email;
+                contactToUpdate.address = contact.address;
+                contactToUpdate.number = contact.number;
+            }
         }
     }
 }

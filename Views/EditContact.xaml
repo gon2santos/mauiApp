@@ -43,6 +43,19 @@
                 x:Name="address"
                 VerticalOptions="Center"/>
         </HorizontalStackLayout></Frame>
+
+        <Button
+            Text="Update"
+            Clicked="UpdateButton_Clicked"
+            BackgroundColor="Aquamarine"
+            TextColor="Black"/>
+
+        <Button
+            Text="Cancel"
+            Clicked="CancelBtn_Clicked"
+            BackgroundColor="Coral"
+            TextColor="Black"/>
         
+
     </VerticalStackLayout>
 </ContentPage>

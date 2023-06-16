@@ -11,7 +11,7 @@ public partial class EditContact : ContentPage
 		InitializeComponent();
 	}
 
-    private void cancelBtn_Clicked(object sender, EventArgs e)
+    private void CancelBtn_Clicked(object sender, EventArgs e)
     {
 		Shell.Current.GoToAsync("..");
     }
@@ -20,11 +20,21 @@ public partial class EditContact : ContentPage
 	{
 		set 
 		{
-			contact = ContactRepository.GetContact(int.Parse(value));
+			contact = ContactRepository.GetContactById(int.Parse(value));
 			name.Text = contact.Name;
 			number.Text = contact.number;
 			email.Text = contact.Email;
 			address.Text = contact.address;
 		}
 	}
+
+    private void UpdateButton_Clicked(object sender, EventArgs e)
+    {
+		contact.number = number.Text;
+		contact.Name = name.Text;
+		contact.Email = email.Text;
+		contact.address = address.Text;
+		ContactRepository.UpdateContact(contact.ContactId, contact);
+		Shell.Current.GoToAsync("..");
+    }
 }
