@@ -14,7 +14,8 @@ namespace MauiApp1.Models
             new Contact("Alejandro Dos Santos", "aledosn@gmail.com", 2, "1530352087", "Arenales 2329")
         };
 
-        public static List<Contact> GetAllContacts() {
+        public static List<Contact> GetAllContacts()
+        {
             return _contacts;
         }
 
@@ -39,6 +40,13 @@ namespace MauiApp1.Models
                 contactToUpdate.address = contact.address;
                 contactToUpdate.number = contact.number;
             }
+        }
+
+        public static void AddContact(Contact contact)
+        {
+            var maxId = _contacts.Max(x => x.ContactId);
+            contact.ContactId = maxId + 1;
+            _contacts.Add(contact);
         }
     }
 }

@@ -37,6 +37,6 @@ public partial class Contacts : ContentPage
 
     private void addBtn_Clicked(object sender, EventArgs e)
     {
-
+        Shell.Current.GoToAsync(nameof(AddContact));
     }
 }
