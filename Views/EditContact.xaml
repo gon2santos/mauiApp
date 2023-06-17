@@ -1,61 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.Views.EditContact"
-             Title="EditContact">
-    <VerticalStackLayout Spacing="10" Margin="20, 20, 20, 0">
-        <Frame Padding="10,2,10,2">
-            <HorizontalStackLayout>
-                <Label
-              Text="Name:"
-                VerticalOptions="Center"
-                WidthRequest="60"
-                />
-            <Entry
-                x:Name="name"
-                VerticalOptions="Center"/>
-        </HorizontalStackLayout>
-        </Frame>
-        <Frame Padding="10,2,10,2"><HorizontalStackLayout>
-            <Label
-               Text="Email:"
-                VerticalOptions="Center"
-                WidthRequest="60"/>
-            <Entry
-                x:Name="email"
-                VerticalOptions="Center"/>
-        </HorizontalStackLayout></Frame>
-        <Frame Padding="10,2,10,2"><HorizontalStackLayout>
-            <Label
-                Text="Number:"
-                VerticalOptions="Center"
-                WidthRequest="60"/>
-            <Entry
-                x:Name="number"
-                VerticalOptions="Center"/>
-        </HorizontalStackLayout></Frame>
-        <Frame Padding="10,2,10,2"><HorizontalStackLayout>
-            <Label
-                Text="Address:"
-                VerticalOptions="Center"
-                WidthRequest="60"/>
-            <Entry
-                x:Name="address"
-                VerticalOptions="Center"/>
-        </HorizontalStackLayout></Frame>
+<ContentPage
+    x:Class="MauiApp1.Views.EditContact"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MauiApp1.Views.Controls"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="EditContact">
 
-        <Button
-            Text="Update"
-            Clicked="UpdateButton_Clicked"
-            BackgroundColor="Aquamarine"
-            TextColor="Black"/>
+    <controls:ContactControl
+        x:Name="contactCtrl"
+        onCancel="CancelBtn_Clicked"
+        onError="contactCtrl_onError"
+        onSave="UpdateButton_Clicked" />
 
-        <Button
-            Text="Cancel"
-            Clicked="CancelBtn_Clicked"
-            BackgroundColor="Coral"
-            TextColor="Black"/>
-        
-
-    </VerticalStackLayout>
 </ContentPage>

@@ -34,4 +34,9 @@ public partial class Contacts : ContentPage
     {
         listContacts.SelectedItem = null;
     }
+
+    private void addBtn_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }

@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.Views.Contacts"
-             Title="Contacts">
+<ContentPage
+    x:Class="MauiApp1.Views.Contacts"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Contacts">
 
-    <ListView 
-        x:Name="listContacts" 
-        BackgroundColor="Transparent"
-        RowHeight="65"
-        ItemSelected="listContacts_ItemSelected"
-        ItemTapped="listContacts_ItemTapped">
+    <Grid ColumnDefinitions="*" RowDefinitions="*, 50">
 
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Name}" Detail="{Binding Email}"></TextCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+        <ListView
+            x:Name="listContacts"
+            Grid.Row="0"
+            Grid.Column="0"
+            BackgroundColor="Transparent"
+            ItemSelected="listContacts_ItemSelected"
+            ItemTapped="listContacts_ItemTapped"
+            RowHeight="65">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Detail="{Binding Email}" Text="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button
+            x:Name="addBtn"
+            Grid.Row="1"
+            Grid.Column="0"
+            Clicked="addBtn_Clicked"
+            Text="Add Contact" />
+
+    </Grid>
 
 </ContentPage>
