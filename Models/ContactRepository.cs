@@ -48,5 +48,34 @@ namespace MauiApp1.Models
             contact.ContactId = maxId + 1;
             _contacts.Add(contact);
         }
+
+        public static void DeleteContact(Contact contact)
+        {
+            _contacts.Remove(contact);
+        }
+
+        internal static List<Contact> SearchContacts(string text)
+        {
+            var contacts = _contacts.Where(x => !string.IsNullOrEmpty(x.Name) && x.Name.StartsWith(text, StringComparison.OrdinalIgnoreCase))?.ToList();
+
+            if (contacts == null || contacts.Count == 0)
+            {
+                contacts = _contacts.Where(x => !string.IsNullOrEmpty(x.Email) && x.Email.StartsWith(text, StringComparison.OrdinalIgnoreCase))?.ToList();
+            }
+            else return contacts;
+
+            if (contacts == null || contacts.Count == 0)
+            {
+                contacts = _contacts.Where(x => !string.IsNullOrEmpty(x.number) && x.number.StartsWith(text, StringComparison.OrdinalIgnoreCase))?.ToList();
+            }
+            else return contacts;
+            if (contacts == null || contacts.Count == 0)
+            {
+                contacts = _contacts.Where(x => !string.IsNullOrEmpty(x.address) && x.address.StartsWith(text, StringComparison.OrdinalIgnoreCase))?.ToList();
+            }
+            else return contacts;
+
+            return contacts;
+        }
     }
 }

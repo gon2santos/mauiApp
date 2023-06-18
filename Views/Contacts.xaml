@@ -8,11 +8,18 @@
     <Grid
         Padding="9"
         ColumnDefinitions="*"
-        RowDefinitions="*, 50">
+        RowDefinitions="50,*,50">
+
+        <SearchBar
+            x:Name="searchBar"
+            Grid.Row="0"
+            Grid.Column="0"
+            Placeholder="Search Contact"
+            TextChanged="SearchBar_TextChanged" />
 
         <ListView
             x:Name="listContacts"
-            Grid.Row="0"
+            Grid.Row="1"
             Grid.Column="0"
             BackgroundColor="Transparent"
             ItemSelected="listContacts_ItemSelected"
@@ -21,14 +28,21 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Detail="{Binding Email}" Text="{Binding Name}" />
+                    <TextCell Detail="{Binding Email}" Text="{Binding Name}">
+                        <TextCell.ContextActions>
+                            <MenuItem
+                                Clicked="MenuItemDelete_Clicked"
+                                CommandParameter="{Binding .}"
+                                Text="Delete" />
+                        </TextCell.ContextActions>
+                    </TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
         <Button
             x:Name="addBtn"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="0"
             BackgroundColor="DarkTurquoise"
             Clicked="addBtn_Clicked"
